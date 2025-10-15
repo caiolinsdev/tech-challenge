@@ -9,9 +9,9 @@ describe('API de Posts', () => {
     await Post.deleteMany({});
   });
 
-  // Fechar conexão após todos os testes
+  // Clean up after all tests
   afterAll(async () => {
-    await mongoose.connection.close();
+    // Connection cleanup is handled in setup.js
   });
 
   describe('GET /api/posts', () => {

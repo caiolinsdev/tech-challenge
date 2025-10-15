@@ -41,8 +41,8 @@ const postSchema = new mongoose.Schema({
   }
 }, {
   timestamps: true,
-  toJSON: { virtuals: true },
-  toObject: { virtuals: true }
+  toJSON: { virtuals: true, versionKey: false },
+  toObject: { virtuals: true, versionKey: false }
 });
 
 // Indexes to improve search performance

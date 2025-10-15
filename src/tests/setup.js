@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
-// Configurações globais para testes
+// Global test configuration
 beforeAll(async () => {
-  // Conectar ao banco de dados de teste
+  // Connect to test database
   const mongoUri = process.env.MONGODB_TEST_URI || 'mongodb://localhost:27017/tech-challenge-blog-test';
   
   if (mongoose.connection.readyState === 0) {
@@ -14,10 +14,12 @@ beforeAll(async () => {
 });
 
 afterAll(async () => {
-  // Limpar banco de dados de teste
-  await mongoose.connection.db.dropDatabase();
-  await mongoose.connection.close();
+  // Clean up test database and close connection
+  if (mongoose.connection.readyState !== 0) {
+    await mongoose.connection.db.dropDatabase();
+    await mongoose.connection.close();
+  }
 });
 
-// Configurar timeout para testes
+// Configure timeout for tests
 jest.setTimeout(30000);

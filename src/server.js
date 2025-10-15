@@ -76,32 +76,39 @@ app.use(errorHandler);
 // Port configuration
 const PORT = process.env.PORT || 3000;
 
-// Initialize server
-const server = app.listen(PORT, () => {
-  console.log(`
+// Initialize server only if not in test environment
+let server;
+if (process.env.NODE_ENV !== 'test') {
+  server = app.listen(PORT, () => {
+    console.log(`
 🚀 Server running on port ${PORT}
 📊 Environment: ${process.env.NODE_ENV || 'development'}
 🌐 URL: http://localhost:${PORT}
 📚 API: http://localhost:${PORT}/api
 🏥 Health Check: http://localhost:${PORT}/api/health
-  `);
-});
+    `);
+  });
+}
 
 // Graceful shutdown
 process.on('SIGTERM', () => {
   console.log('SIGTERM received. Shutting down server gracefully...');
-  server.close(() => {
-    console.log('Server closed.');
-    process.exit(0);
-  });
+  if (server) {
+    server.close(() => {
+      console.log('Server closed.');
+      process.exit(0);
+    });
+  }
 });
 
 process.on('SIGINT', () => {
   console.log('SIGINT received. Shutting down server gracefully...');
-  server.close(() => {
-    console.log('Server closed.');
-    process.exit(0);
-  });
+  if (server) {
+    server.close(() => {
+      console.log('Server closed.');
+      process.exit(0);
+    });
+  }
 });
 
 // Handle uncaught exceptions
