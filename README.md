@@ -207,39 +207,6 @@ GET /posts/search?q=termo&page=1&limit=10
 GET /health
 ```
 
-## 🐳 Docker
-
-### Desenvolvimento com Docker
-
-```bash
-# Iniciar ambiente de desenvolvimento
-npm run docker:dev
-
-# Parar ambiente de desenvolvimento
-npm run docker:dev:stop
-```
-
-### Produção com Docker
-
-```bash
-# Construir e executar em produção
-npm run docker:build
-npm run docker:run
-
-# Parar containers
-npm run docker:stop
-```
-
-### Docker Compose Completo
-
-```bash
-# Iniciar todos os serviços (incluindo MongoDB Express)
-docker-compose --profile tools up -d
-
-# Apenas aplicação e MongoDB
-docker-compose up -d
-```
-
 **Serviços Disponíveis:**
 - **API**: http://localhost:3000
 - **MongoDB**: localhost:27017
@@ -338,34 +305,6 @@ npm run docker:run     # Executar com Docker Compose
 npm run docker:dev     # Executar ambiente de desenvolvimento
 ```
 
-## 🚀 Deploy
-
-### Opções de Deploy
-
-1. **AWS ECS/Fargate**
-2. **Google Cloud Run**
-3. **Azure Container Instances**
-4. **DigitalOcean App Platform**
-5. **Heroku**
-6. **Railway**
-
-### Exemplo de Deploy no Heroku
-
-```bash
-# Instalar Heroku CLI
-# Login
-heroku login
-
-# Criar app
-heroku create tech-challenge-blog
-
-# Configurar variáveis
-heroku config:set NODE_ENV=production
-heroku config:set MONGODB_URI=mongodb+srv://...
-
-# Deploy
-git push heroku main
-```
 
 ## 🤝 Contribuição
 
@@ -375,17 +314,9 @@ git push heroku main
 4. Push para a branch (`git push origin feature/AmazingFeature`)
 5. Abra um Pull Request
 
-## 📄 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
 ## 👥 Equipe
 
-Desenvolvido pela equipe do Tech Challenge para conectar professores e alunos através da tecnologia.
-
-## 📞 Suporte
-
-Para dúvidas ou suporte, abra uma issue no repositório ou entre em contato com a equipe.
+Desenvolvido por Caio Lins Magno Ferreira, o Tech Challenge para conectar professores e alunos através da tecnologia.
 
 ---
 
