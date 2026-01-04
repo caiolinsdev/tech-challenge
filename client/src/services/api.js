@@ -53,5 +53,13 @@ export const postsAPI = {
   },
 }
 
+// Auth API
+export const authAPI = {
+  // Login
+  login: (email, password) => {
+    return api.post('/auth/login', { email, password })
+  },
+}
+
 export default api
 

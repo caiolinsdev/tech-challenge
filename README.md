@@ -358,6 +358,7 @@ npm run lint:fix       # Corrigir problemas de lint
 npm run docker:build   # Construir imagem Docker
 npm run docker:run     # Executar com Docker Compose
 npm run docker:dev     # Executar ambiente de desenvolvimento
+npm run create:admin   # Criar usuário admin
 ```
 
 

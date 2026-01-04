@@ -100,7 +100,7 @@ const Login = () => {
     setLoading(true)
 
     try {
-      const result = login(email, password)
+      const result = await login(email, password)
       if (result.success) {
         navigate('/admin')
       } else {
@@ -158,9 +158,9 @@ const Login = () => {
         <InfoBox>
           <strong>Credenciais de teste:</strong>
           <br />
-          Email: professor@escola.com | Senha: professor123
-          <br />
           Email: admin@escola.com | Senha: admin123
+          <br />
+          <small>Execute "npm run create:admin" para criar o usuário admin</small>
         </InfoBox>
       </Form>
     </Container>

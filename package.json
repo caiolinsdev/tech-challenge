@@ -18,7 +18,8 @@
     "docker:dev": "docker-compose -f docker-compose.dev.yml up -d",
     "docker:dev:stop": "docker-compose -f docker-compose.dev.yml down",
     "populate": "node scripts/populate-db.js",
-    "populate:clear": "node scripts/populate-db.js --clear"
+    "populate:clear": "node scripts/populate-db.js --clear",
+    "create:admin": "node scripts/create-admin-user.js"
   },
   "keywords": [
     "blog",
@@ -37,7 +38,8 @@
     "dotenv": "^16.3.1",
     "express-rate-limit": "^7.1.5",
     "express-validator": "^7.0.1",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "bcryptjs": "^2.4.3"
   },
   "devDependencies": {
     "nodemon": "^3.0.2",

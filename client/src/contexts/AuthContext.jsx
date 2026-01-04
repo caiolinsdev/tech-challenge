@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from 'react'
+import { authAPI } from '../services/api'
 
 const AuthContext = createContext(null)
 
@@ -19,34 +20,24 @@ export const AuthProvider = ({ children }) => {
     setLoading(false)
   }, [])
 
-  const login = (email, password) => {
-    // Autenticação simples - em produção, isso seria uma chamada à API
-    // Por enquanto, aceitamos qualquer email/password como válido
-    // ou podemos usar credenciais fixas para demonstração
-    const validCredentials = [
-      { email: 'professor@escola.com', password: 'professor123' },
-      { email: 'admin@escola.com', password: 'admin123' },
-    ]
-
-    const validUser = validCredentials.find(
-      (cred) => cred.email === email && cred.password === password
-    )
-
-    if (validUser || password) {
-      const userData = {
-        email: email || 'professor@escola.com',
-        name: email?.split('@')[0] || 'Professor',
-        role: 'professor',
+  const login = async (email, password) => {
+    try {
+      const response = await authAPI.login(email, password)
+      
+      if (response.data.success) {
+        const userData = response.data.data
+        setIsAuthenticated(true)
+        setUser(userData)
+        localStorage.setItem('isAuthenticated', 'true')
+        localStorage.setItem('user', JSON.stringify(userData))
+        return { success: true }
       }
 
-      setIsAuthenticated(true)
-      setUser(userData)
-      localStorage.setItem('isAuthenticated', 'true')
-      localStorage.setItem('user', JSON.stringify(userData))
-      return { success: true }
+      return { success: false, error: 'Erro ao fazer login' }
+    } catch (error) {
+      const errorMessage = error.response?.data?.message || 'Credenciais inválidas'
+      return { success: false, error: errorMessage }
     }
-
-    return { success: false, error: 'Credenciais inválidas' }
   }
 
   const logout = () => {

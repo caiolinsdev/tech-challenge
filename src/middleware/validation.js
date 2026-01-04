@@ -130,10 +130,28 @@ const validateSearch = [
   handleValidationErrors
 ];
 
+// Validation for login
+const validateLogin = [
+  body('email')
+    .trim()
+    .notEmpty()
+    .withMessage('Email é obrigatório')
+    .isEmail()
+    .withMessage('Email inválido')
+    .normalizeEmail(),
+  body('password')
+    .notEmpty()
+    .withMessage('Senha é obrigatória')
+    .isLength({ min: 6 })
+    .withMessage('Senha deve ter pelo menos 6 caracteres'),
+  handleValidationErrors
+];
+
 module.exports = {
   validateCreatePost,
   validateUpdatePost,
   validateId,
   validateSearch,
+  validateLogin,
   handleValidationErrors
 };

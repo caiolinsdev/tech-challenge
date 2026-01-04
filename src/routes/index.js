@@ -3,6 +3,7 @@ const router = express.Router();
 
 // Import routes
 const postRoutes = require('./postRoutes');
+const authRoutes = require('./authRoutes');
 
 // Logging middleware for routes
 router.use((req, res, next) => {
@@ -12,6 +13,7 @@ router.use((req, res, next) => {
 
 // API routes
 router.use('/posts', postRoutes);
+router.use('/auth', authRoutes);
 
 // Health check route
 router.get('/health', (req, res) => {

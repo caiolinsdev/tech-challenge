@@ -7,6 +7,9 @@ db = db.getSiblingDB('tech-challenge-blog');
 // Criar coleção de posts se não existir
 db.createCollection('posts');
 
+// Criar coleção de users se não existir
+db.createCollection('users');
+
 // Criar índices para melhorar performance
 db.posts.createIndex({ titulo: 'text', conteudo: 'text', resumo: 'text' });
 db.posts.createIndex({ autor: 1 });
@@ -42,3 +45,4 @@ db.posts.insertMany([
 
 print('Banco de dados inicializado com sucesso!');
 print('Posts de exemplo criados.');
+print('Execute "npm run create:admin" para criar o usuário admin.');
