@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { postsAPI } from '../services/api'
@@ -123,14 +123,27 @@ const PostDetail = () => {
   const [post, setPost] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+  const hasTrackedView = useRef(false)
 
   useEffect(() => {
     const fetchPost = async () => {
       setLoading(true)
       setError(null)
       try {
+        // Buscar o post
         const response = await postsAPI.getById(id)
         setPost(response.data.data)
+        
+        // Registrar visualização apenas uma vez
+        if (!hasTrackedView.current) {
+          hasTrackedView.current = true
+          try {
+            await postsAPI.trackView(id)
+          } catch (trackError) {
+            // Ignora erro de tracking, não é crítico
+            console.warn('Erro ao registrar visualização:', trackError)
+          }
+        }
       } catch (err) {
         setError('Post não encontrado ou erro ao carregar.')
         console.error(err)
@@ -140,6 +153,11 @@ const PostDetail = () => {
     }
 
     fetchPost()
+
+    // Reset quando o ID mudar
+    return () => {
+      hasTrackedView.current = false
+    }
   }, [id])
 
   const formatDate = (dateString) => {

@@ -4,6 +4,7 @@ const {
   listPosts,
   searchPosts,
   getPost,
+  trackPostView,
   createPost,
   updatePost,
   deletePost,
@@ -21,6 +22,7 @@ const {
 // Public routes
 router.get('/', validateSearch, listPosts);
 router.get('/search', validateSearch, searchPosts);
+router.post('/:id/view', validateId, trackPostView); // Deve vir antes de /:id
 router.get('/:id', validateId, getPost);
 router.post('/', validateCreatePost, createPost);
 router.put('/:id', validateUpdatePost, updatePost);

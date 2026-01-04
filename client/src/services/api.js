@@ -32,6 +32,11 @@ export const postsAPI = {
     return api.get(`/posts/${id}`)
   },
 
+  // Registrar visualização de um post
+  trackView: (id) => {
+    return api.post(`/posts/${id}/view`)
+  },
+
   // Criar um novo post
   create: (postData) => {
     return api.post('/posts', postData)

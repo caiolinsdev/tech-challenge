@@ -102,13 +102,39 @@ const getPost = async (req, res, next) => {
       });
     }
 
-    // Increment views
-    await post.incrementViews();
-
     res.json({
       success: true,
       data: post,
       message: 'Post encontrado com sucesso'
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// @desc    Track a post view (increment views)
+// @route   POST /api/posts/:id/view
+// @access  Public
+const trackPostView = async (req, res, next) => {
+  try {
+    // Incrementa visualizações apenas se o post estiver ativo (operação atômica)
+    const post = await Post.findOneAndUpdate(
+      { _id: req.params.id, ativo: true },
+      { $inc: { visualizacoes: 1 } },
+      { new: true }
+    );
+
+    if (!post) {
+      return res.status(404).json({
+        success: false,
+        message: 'Post não encontrado'
+      });
+    }
+
+    res.json({
+      success: true,
+      data: { visualizacoes: post.visualizacoes },
+      message: 'Visualização registrada com sucesso'
     });
   } catch (error) {
     next(error);
@@ -256,6 +282,7 @@ module.exports = {
   listPosts,
   searchPosts,
   getPost,
+  trackPostView,
   createPost,
   updatePost,
   deletePost,
