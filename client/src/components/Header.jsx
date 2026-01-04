@@ -78,6 +78,20 @@ const UserInfo = styled.div`
   flex-wrap: wrap;
 `
 
+const UserDisplay = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+  color: white;
+  font-weight: bold;
+  
+  svg {
+    font-weight: bold;
+  }
+`
+
 const Header = () => {
   const { isAuthenticated, user, logout } = useAuth()
   const navigate = useNavigate()
@@ -101,12 +115,12 @@ const Header = () => {
                 <FiEdit3 /> Criar Post
               </NavLink>
               <NavLink to="/admin">
-                <FiSettings /> Admin
+                <FiSettings /> Posts
               </NavLink>
               <UserInfo>
-                <NavLink to="/admin">
+                <UserDisplay>
                   <FiUser /> {user?.name || 'Professor'}
-                </NavLink>
+                </UserDisplay>
                 <Button onClick={handleLogout}>
                   <FiLogOut /> Sair
                 </Button>
