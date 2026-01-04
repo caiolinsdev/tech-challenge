@@ -22,6 +22,7 @@ Esta aplicação foi desenvolvida como parte do Tech Challenge, visando resolver
 
 ## 🛠 Tecnologias Utilizadas
 
+### Back-End
 - **Backend**: Node.js 18+
 - **Framework**: Express.js
 - **Banco de Dados**: MongoDB 7.0
@@ -30,6 +31,14 @@ Esta aplicação foi desenvolvida como parte do Tech Challenge, visando resolver
 - **Containerização**: Docker + Docker Compose
 - **CI/CD**: GitHub Actions
 - **Segurança**: Helmet, CORS, Rate Limiting
+
+### Front-End
+- **React 18.2+**: Biblioteca JavaScript para construção de interfaces
+- **React Router 6**: Roteamento e navegação
+- **Styled Components 6**: Estilização com CSS-in-JS
+- **Axios**: Cliente HTTP para requisições à API
+- **Vite**: Build tool e dev server moderno
+- **React Icons**: Biblioteca de ícones
 
 ## 📝 Requisitos Funcionais
 
@@ -102,6 +111,8 @@ RATE_LIMIT_MAX_REQUESTS=100
 
 ### Desenvolvimento Local
 
+#### Back-End (API)
+
 ```bash
 # Iniciar MongoDB (se não estiver rodando)
 mongod
@@ -114,6 +125,23 @@ npm start
 ```
 
 A API estará disponível em: `http://localhost:3000`
+
+#### Front-End (React)
+
+```bash
+# Navegar para a pasta do cliente
+cd client
+
+# Instalar dependências (primeira vez)
+npm install
+
+# Executar em modo desenvolvimento
+npm run dev
+```
+
+O front-end estará disponível em: `http://localhost:3001`
+
+**Nota**: O front-end está configurado para fazer proxy das requisições `/api` para `http://localhost:3000`, então é necessário que o back-end esteja rodando simultaneamente.
 
 ### Testes
 
@@ -248,7 +276,34 @@ O projeto inclui um pipeline completo de CI/CD com GitHub Actions:
 
 ```
 tech-challenge/
-├── src/
+├── client/                      # Front-End React
+│   ├── src/
+│   │   ├── components/          # Componentes reutilizáveis
+│   │   │   ├── Layout.jsx       # Layout principal
+│   │   │   ├── Header.jsx       # Cabeçalho com navegação
+│   │   │   ├── Footer.jsx       # Rodapé
+│   │   │   ├── Loading.jsx      # Componente de loading
+│   │   │   └── Button.jsx       # Botão reutilizável
+│   │   ├── pages/               # Páginas da aplicação
+│   │   │   ├── Home.jsx         # Lista de posts
+│   │   │   ├── PostDetail.jsx   # Detalhes do post
+│   │   │   ├── CreatePost.jsx   # Criar post
+│   │   │   ├── EditPost.jsx     # Editar post
+│   │   │   ├── Admin.jsx        # Painel administrativo
+│   │   │   └── Login.jsx        # Login
+│   │   ├── contexts/            # Context API
+│   │   │   └── AuthContext.jsx  # Context de autenticação
+│   │   ├── services/            # Serviços e APIs
+│   │   │   └── api.js           # Cliente API e endpoints
+│   │   ├── styles/              # Estilos globais
+│   │   │   └── globalStyles.js  # Estilos globais
+│   │   ├── App.jsx              # Componente principal
+│   │   └── main.jsx             # Entry point
+│   ├── index.html               # HTML template
+│   ├── package.json             # Dependências do front-end
+│   ├── vite.config.js           # Configuração do Vite
+│   └── README.md                # Documentação do front-end
+├── src/                         # Back-End Node.js
 │   ├── config/
 │   │   └── database.js          # Configuração do MongoDB
 │   ├── controllers/
@@ -273,8 +328,8 @@ tech-challenge/
 ├── Dockerfile                   # Docker produção
 ├── Dockerfile.dev              # Docker desenvolvimento
 ├── jest.config.js              # Configuração Jest
-├── package.json                # Dependências e scripts
-└── README.md                   # Documentação
+├── package.json                # Dependências e scripts do back-end
+└── README.md                   # Documentação principal
 ```
 
 ## 🔧 Configurações Adicionais
@@ -314,10 +369,25 @@ npm run docker:dev     # Executar ambiente de desenvolvimento
 4. Push para a branch (`git push origin feature/AmazingFeature`)
 5. Abra um Pull Request
 
+## 🎨 Front-End
+
+O front-end foi desenvolvido em React e está localizado na pasta `client/`. Para mais informações sobre o front-end, consulte o [README do cliente](./client/README.md).
+
+### Funcionalidades do Front-End
+
+- ✅ Página principal com lista de posts e busca
+- ✅ Página de leitura de post completo
+- ✅ Página de criação de postagens (autenticado)
+- ✅ Página de edição de postagens (autenticado)
+- ✅ Página administrativa com gerenciamento completo (autenticado)
+- ✅ Sistema de autenticação para professores
+- ✅ Design responsivo e moderno
+- ✅ Integração completa com API REST
+
 ## 👥 Equipe
 
 Desenvolvido por Caio Lins Magno Ferreira, o Tech Challenge para conectar professores e alunos através da tecnologia.
 
 ---
 
-**Tech Challenge Blog API** - Conectando conhecimento através da tecnologia 🚀
+**Tech Challenge Blog** - Conectando conhecimento através da tecnologia 🚀
