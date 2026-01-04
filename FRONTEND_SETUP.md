@@ -36,8 +36,6 @@ A aplicação estará disponível em: **http://localhost:3001**
 ## 🔐 Credenciais de Teste
 
 Para acessar as páginas protegidas, use uma das seguintes credenciais:
-
-- **Email**: `professor@escola.com` | **Senha**: `professor123`
 - **Email**: `admin@escola.com` | **Senha**: `admin123`
 
 ## 📁 Estrutura do Front-End

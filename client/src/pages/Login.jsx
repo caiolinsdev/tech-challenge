@@ -127,7 +127,7 @@ const Login = () => {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="professor@escola.com"
+              placeholder="admin@escola.com"
               required
             />
           </InputContainer>

@@ -218,8 +218,6 @@ A autenticação é gerenciada através do `AuthContext` usando React Context AP
 ### Credenciais de Teste
 
 Por padrão, as seguintes credenciais estão configuradas:
-
-- **Email**: `professor@escola.com` | **Senha**: `professor123`
 - **Email**: `admin@escola.com` | **Senha**: `admin123`
 
 ### Rotas Protegidas
