@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  # Aplicação Node.js
+  # Aplicação Node.js (Back-end)
   app:
     build: .
     container_name: tech-challenge-blog-app
@@ -16,6 +16,20 @@ services:
         condition: service_healthy
     volumes:
       - ./logs:/app/logs
+    restart: unless-stopped
+    networks:
+      - app-network
+
+  # Aplicação React (Front-end)
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: tech-challenge-blog-client
+    ports:
+      - "80:80"
+    depends_on:
+      - app
     restart: unless-stopped
     networks:
       - app-network

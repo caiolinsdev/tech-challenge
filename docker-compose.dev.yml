@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  # Aplicação Node.js para desenvolvimento
+  # Aplicação Node.js para desenvolvimento (Back-end)
   app:
     build: 
       context: .
@@ -24,6 +24,25 @@ services:
     networks:
       - app-network
     command: npm run dev
+
+  # Aplicação React para desenvolvimento (Front-end)
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev
+    container_name: tech-challenge-blog-client-dev
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+    environment:
+      - DOCKER_ENV=true
+    depends_on:
+      - app
+    restart: unless-stopped
+    networks:
+      - app-network
 
   # MongoDB para desenvolvimento
   mongodb:
