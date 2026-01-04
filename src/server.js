@@ -45,7 +45,12 @@ app.use(helmet({
 app.use(cors({
   origin: process.env.NODE_ENV === 'production' 
     ? ['https://yourdomain.com'] // Replace with your domain
-    : ['http://localhost:3000', 'http://localhost:3001'],
+    : [
+        'http://localhost:3000', 
+        'http://localhost:3001',
+        'http://client:3001', // Docker network
+        'http://client:80' // Docker network (produção)
+      ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
