@@ -11,7 +11,7 @@ const FooterContainer = styled.footer`
 const Footer = () => {
   return (
     <FooterContainer>
-      <p>&copy; 2024 Tech Challenge Blog. Plataforma Educacional.</p>
+      <p>&copy; 2026 Tech Challenge Blog. Plataforma Educacional.</p>
     </FooterContainer>
   )
 }
