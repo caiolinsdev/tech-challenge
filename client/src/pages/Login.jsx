@@ -154,14 +154,6 @@ const Login = () => {
         <Button type="submit" disabled={loading} fullWidth>
           {loading ? 'Entrando...' : 'Entrar'}
         </Button>
-
-        <InfoBox>
-          <strong>Credenciais de teste:</strong>
-          <br />
-          Email: admin@escola.com | Senha: admin123
-          <br />
-          <small>Execute "npm run create:admin" para criar o usuário admin</small>
-        </InfoBox>
       </Form>
     </Container>
   )
