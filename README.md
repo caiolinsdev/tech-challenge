@@ -385,6 +385,72 @@ O front-end foi desenvolvido em React e está localizado na pasta `client/`. Par
 - ✅ Design responsivo e moderno
 - ✅ Integração completa com API REST
 
+## 🛠 Tecnologias Utilizadas
+
+- **React 18.2+** - Biblioteca JavaScript para construção de interfaces
+- **React Router 6** - Roteamento e navegação
+- **Styled Components 6** - Estilização com CSS-in-JS
+- **Axios** - Cliente HTTP para requisições à API
+- **Vite** - Build tool e dev server moderno
+- **React Icons** - Biblioteca de ícones
+
+## 📱 Responsividade
+
+A aplicação é totalmente responsiva, com breakpoints para:
+
+- **Desktop**: > 768px
+- **Tablet**: 768px
+- **Mobile**: < 768px
+
+### ✅ Páginas Implementadas
+
+1. **Página Principal (Lista de Posts)**
+   - Exibe lista de todos os posts disponíveis
+   - Mostra título, autor e descrição resumida
+   - Campo de busca para filtrar posts por palavras-chave
+   - Paginação de resultados
+   - Design responsivo em cards
+
+2. **Página de Leitura de Post**
+   - Exibe conteúdo completo do post
+   - Mostra informações do autor, data e visualizações
+   - Exibe tags do post
+   - Botão para voltar à lista
+
+3. **Página de Criação de Postagens**
+   - Formulário completo para criação de posts
+   - Campos: título, autor, resumo, conteúdo e tags
+   - Validação de campos
+   - Feedback visual de sucesso/erro
+
+4. **Página de Edição de Postagens**
+   - Carrega dados atuais do post para edição
+   - Formulário pré-preenchido
+   - Validação de campos
+   - Atualização via API
+
+5. **Página Administrativa**
+   - Lista completa de todas as postagens
+   - Tabela com informações resumidas
+   - Ações: visualizar, editar e excluir
+   - Confirmação antes de excluir
+   - Paginação
+
+6. **Autenticação**
+   - Página de login
+   - Proteção de rotas (criação, edição e admin)
+   - Gerenciamento de sessão via Context API
+   - Persistência de autenticação
+
+### Credenciais de Teste [ADMIN]
+
+Por padrão, as seguintes credenciais estão configuradas:
+- **Email**: `admin@escola.com` | **Senha**: `admin123`
+
+## 🔐 Autenticação
+
+A autenticação é gerenciada através do `AuthContext` usando React Context API.
+
 ## 👥 Equipe
 
 Desenvolvido por Caio Lins Magno Ferreira, o Tech Challenge para conectar professores e alunos através da tecnologia.
